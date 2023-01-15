@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Food, Diet, FlavorProfile, Course, State, Region, Country
+from django.core.management import call_command, CommandError
+
 
 class FoodAdmin(admin.ModelAdmin):
     list_display = ('name_en', 'name_ar', 'ingredients_en', 'ingredients_ar','diet','prep_time','cook_time','flavor_profile','course','state','photo','video')
