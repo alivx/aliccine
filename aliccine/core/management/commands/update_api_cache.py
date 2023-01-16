@@ -8,6 +8,8 @@ from django.core import serializers
 from django.conf import settings
 media_root = settings.MEDIA_ROOT
 media_url = settings.MEDIA_URL
+AWS_S3_CUSTOM_DOMAIN = settings.AWS_S3_CUSTOM_DOMAIN
+
 import json
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage as storage
@@ -24,3 +26,4 @@ class Command(BaseCommand):
         s3_file = storage.open(file_path, 'w')
         s3_file.write(data)
         s3_file.close()
+        print(f"Object Endpoint: https://{AWS_S3_CUSTOM_DOMAIN}/data/cache.json".replace("fra1.","fra1.cdn."))
